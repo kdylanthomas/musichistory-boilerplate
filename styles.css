@@ -1,21 +1,27 @@
+/* assign font to whole page */
 * {
-	font-family: Arial, sans-serif;
+	font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
 }
 
+/* layout & styling of three main divs */
 #top {
 	background-color: #FFB4B0; 
 	border: 2px solid black;
 	text-align: left;
 	padding: 10px;
+	margin: auto;
+	width: 65%;
 }
 
 #left-side {
 	background-color: #4DD7FA;
-	text-align: center;
+	text-align: left;
 	border: 2px solid black;
 	float: left;
-	width: 32%;
-	margin: 10px 10px 10px 0;
+	width: 17%;
+	/* should find a more responsive solution to div sizes */
+	margin: 12px 0 10px 209px;
+	padding: 5px 0 25px 10px;
 }
 
 #right-side {
@@ -24,7 +30,45 @@
 	border: 2px solid black;
 	color: #785616;
 	float: right;
-	width: 65%;
-	margin: 10px 0 10px 10px;
+	width: 46%;
+	/* should find a more responsive solution to div sizes */
+	margin: 12px 209px 10px 0;
+	padding: 5px 0 25px 20px;
 }
 
+/* adds fake pipe characters to nav bar and song info (??) */
+.needspipe {
+	border-right: 1.5px solid black;
+	padding-right: 5px;
+}
+
+/* made button wider */
+button {
+	width: 70%;
+}
+
+/* trying to replicate mockup font settings */
+
+span {
+	color: #000;
+	font-weight: 200;
+}
+
+a, span {
+	font-size: 0.85em;
+}
+
+label {
+	font-size: 0.9em;
+}
+
+h2 {
+	font-weight: 400;
+}
+
+/* artist, album, genre headers listed above selects */
+.userselects {
+	font-size: 0.9em;
+	display: block;
+	padding: 10px 0 10px 0;
+}

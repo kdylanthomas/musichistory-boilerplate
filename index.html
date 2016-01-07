@@ -8,19 +8,22 @@
 </head>
 
 <body>
+<!-- note: ask about whether to use ID or class -->
 <!-- create a nav bar w/ view music, add music, profile -->
 <!-- probably needs to clear top in css -->
 	<nav id="top">
-		<a href="#">View Music</a>
-		<a href="#">Add Music</a>
+		<a href="#" class="needspipe">View Music</a>
+		<a href="#" class="needspipe">Add Music</a>
 		<a href="#">Profile</a>
 	</nav>
 
+<!-- note: replace these w/ article, header tags in final version -->
 <!-- create left side div with  -->
 	<div id="left-side">
-		<!-- song length scrollbar, ??? -->
+		<!-- song length scrollbar, google calls this a scrubber... -->
+		<span class="userselects">Song length:</span>
 		<!-- artist dropdown w/ five artists,  -->
-		<h4 id="artist">Artist:</h4>
+		<span class="userselects">Artist:</span>
 			<select id="artist-select">
 			  <option value="prettylights">Pretty Lights</option>
 			  <option value="avettbrothers">The Avett Brothers</option>
@@ -28,7 +31,7 @@
 			  <option value="neutralmilk">Neutral Milk Hotel</option>
 			</select>
 		<!-- album dropdown w/ 1 or more album per artist,  -->
-		<h4 id="album">Album:</h4>
+		<span class="userselects">Album:</span>
 			<select id="album-select">
 			  <option value="colormap">A Color Map Of The Sun</option>
 			  <option value="emotionalism">Emotionalism</option>
@@ -36,10 +39,14 @@
 			  <option value="aeroplane">In The Aeroplane Over The Sea</option>
 			</select>
 		<!-- genre checkbox options,  -->
-		<h4 id="genre">Genre:</h4>
-			<label><input type="checkbox" id="Electronic" value="electronic"><label for="Electronic">Electronic</label><br>
+		<span class="userselects">Genre:</span>
+			<input type="checkbox" id="Electronic" value="electronic"><label for="Electronic">Electronic</label><br>
 			<input type="checkbox" id="Americana" value="americana"> <label for="Americana">Americana</label><br>
 			<input type="checkbox" id="Indie" value="indie"> <label for="Indie">Indie</label><br>
+			<input type="checkbox" id="Funk" value="funk"> <label for="Funk">Funk</label><br>
+			<input type="checkbox" id="Rock" value="rock"> <label for="Rock">Rock</label><br>
+			<input type="checkbox" id="Bluegrass" value="bluegrass"> <label for="Bluegrass">Bluegrass</label><br>
+			</ul>
 		<!-- filter button -->
 		<button id="filter">Filter</button>
 	</div>
@@ -49,20 +56,20 @@
 		<!-- four song name headers with -->
 			<!-- artist, album, genre (should be separated w/ pipe chars) -->
 		<h2>Song Name</h2>
-			<span>Artist Name</span>
-			<span>Album Name</span>
+			<span class="needspipe">Artist Name</span>
+			<span class="needspipe">Album Name</span>
 			<span>Genre</span>
 		<h2>Song Name</h2>
-			<span>Artist Name</span>
-			<span>Album Name</span>
+			<span class="needspipe">Artist Name</span>
+			<span class="needspipe">Album Name</span>
 			<span>Genre</span>
 		<h2>Song Name</h2>
-			<span>Artist Name</span>
-			<span>Album Name</span>
+			<span class="needspipe">Artist Name</span>
+			<span class="needspipe">Album Name</span>
 			<span>Genre</span>
 		<h2>Song Name</h2>
-			<span>Artist Name</span>
-			<span>Album Name</span>
+			<span class="needspipe">Artist Name</span>
+			<span class="needspipe">Album Name</span>
 			<span>Genre</span>
 	</div>
 
