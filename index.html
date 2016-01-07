@@ -8,7 +8,6 @@
 </head>
 
 <body>
-<!-- note: ask about whether to use ID or class -->
 <!-- create a nav bar w/ view music, add music, profile -->
 <!-- probably needs to clear top in css -->
 	<nav id="top">
@@ -17,35 +16,38 @@
 		<a href="#">Profile</a>
 	</nav>
 
-<!-- note: replace these w/ article, header tags in final version -->
 <!-- create left side div with  -->
 	<div id="left-side">
-		<!-- song length scrollbar, google calls this a scrubber... -->
+		<!-- song length scrollbar -->
 		<span class="userselects">Song length:</span>
+		<input id="slider" type="range"  min="0" max="100" />
 		<!-- artist dropdown w/ five artists,  -->
 		<span class="userselects">Artist:</span>
-			<select id="artist-select">
+			<select class="dropdowns">
 			  <option value="prettylights">Pretty Lights</option>
 			  <option value="avettbrothers">The Avett Brothers</option>
 			  <option value="griz">Griz</option>
 			  <option value="neutralmilk">Neutral Milk Hotel</option>
+			  <option value="lcd">LCD Soundsystem</option>
 			</select>
 		<!-- album dropdown w/ 1 or more album per artist,  -->
 		<span class="userselects">Album:</span>
-			<select id="album-select">
+			<select class="dropdowns">
 			  <option value="colormap">A Color Map Of The Sun</option>
 			  <option value="emotionalism">Emotionalism</option>
 			  <option value="sayitloud">Say It Loud</option>
 			  <option value="aeroplane">In The Aeroplane Over The Sea</option>
+			  <option value="thisishappening">This Is Happening</option>
 			</select>
 		<!-- genre checkbox options,  -->
 		<span class="userselects">Genre:</span>
-			<input type="checkbox" id="Electronic" value="electronic"><label for="Electronic">Electronic</label><br>
-			<input type="checkbox" id="Americana" value="americana"> <label for="Americana">Americana</label><br>
-			<input type="checkbox" id="Indie" value="indie"> <label for="Indie">Indie</label><br>
-			<input type="checkbox" id="Funk" value="funk"> <label for="Funk">Funk</label><br>
-			<input type="checkbox" id="Rock" value="rock"> <label for="Rock">Rock</label><br>
-			<input type="checkbox" id="Bluegrass" value="bluegrass"> <label for="Bluegrass">Bluegrass</label><br>
+			<ul class="checkboxes">
+				<li><input type="checkbox" id="Electronic" value="electronic"><label for="Electronic">Electronic</label></li>
+				<li><input type="checkbox" id="Americana" value="americana"> <label for="Americana">Americana</label></li>
+				<li><input type="checkbox" id="Indie" value="indie"> <label for="Indie">Indie</label></li>
+				<li><input type="checkbox" id="Funk" value="funk"> <label for="Funk">Funk</label></li>
+				<li><input type="checkbox" id="Rock" value="rock"> <label for="Rock">Rock</label></li>
+				<li><input type="checkbox" id="Dancepunk" value="dancepunk"> <label for="Dancepunk">Dance Punk</label></li>
 			</ul>
 		<!-- filter button -->
 		<button id="filter">Filter</button>
@@ -54,23 +56,23 @@
 <!-- when you drop down select artist, right side div should show -->
 	<div id="right-side">
 		<!-- four song name headers with -->
-			<!-- artist, album, genre (should be separated w/ pipe chars) -->
-		<h2>Song Name</h2>
-			<span class="needspipe">Artist Name</span>
-			<span class="needspipe">Album Name</span>
-			<span>Genre</span>
-		<h2>Song Name</h2>
-			<span class="needspipe">Artist Name</span>
-			<span class="needspipe">Album Name</span>
-			<span>Genre</span>
-		<h2>Song Name</h2>
-			<span class="needspipe">Artist Name</span>
-			<span class="needspipe">Album Name</span>
-			<span>Genre</span>
-		<h2>Song Name</h2>
-			<span class="needspipe">Artist Name</span>
-			<span class="needspipe">Album Name</span>
-			<span>Genre</span>
+		<!-- artist, album, genre (should be separated w/ pipe chars) -->
+		<h2>"Dance Yrself Clean"</h2>
+			<span class="needswidepipe")>LCD Soundsystem</span>
+			<span class="needswidepipe needspadding">This Is Happening</span>
+			<span class="needspadding">Dance Punk</span>
+		<h2>"A Fine Way To Die"</h2>
+			<span class="needswidepipe">Griz</span>
+			<span class="needswidepipe needspadding">Say It Loud</span>
+			<span class="needspadding">Electronic</span>
+		<h2>"Holland, 1945"</h2>
+			<span class="needswidepipe">Neutral Milk Hotel</span>
+			<span class="needswidepipe needspadding">In The Aeroplane Over The Sea</span>
+			<span class="needspadding">Indie</span>
+		<h2>"I Would Be Sad"</h2>
+			<span class="needswidepipe">The Avett Brothers</span>
+			<span class="needswidepipe needspadding">Emotionalism</span>
+			<span class="needspadding">Americana</span>
 	</div>
 
 </body>
