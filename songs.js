@@ -1,5 +1,4 @@
 var songs = [];
-var correctSongs = [];
 var mainContent = document.getElementById("right-side");
 
 songs[songs.length] = "Legs > by Z*ZTop on the album Eliminator";
@@ -14,13 +13,29 @@ songs[songs.length] = "A Fine Way To Die > by Griz on the album Say It Loud";
 console.log("songs", songs);
 
 for (var i = 0; i < songs.length; i++) {
+	var currentSong = songs[i];
 	// Loop over the array and remove any words or characters that obviously don't belong
 	// find and replace the > character in each item with a - character
-	correctSongs.push(songs[i].replace(/[*@(!]/g, '').replace(/>/g, "-"));
+	currentSong = currentSong.replace(/[*@(!]/g, "").replace(/by/g, "").replace(/>/g, "-").replace(/on the album/g, "-");  
 	// Must add each string to the DOM in index.html in the main content area.
-	mainContent.innerHTML += "<h2>" + correctSongs[i] + "</h2>";
+	mainContent.innerHTML += "<h2>" + currentSong + "</h2>";
 }
 
-console.log("correctSongs", correctSongs);
+// button functionality 
 
+var addButton = document.getElementById("add-song");
+
+addButton.addEventListener("click", function(event) {
+	var songInput = document.getElementById("song").value;
+	console.log(songInput);
+	var artistInput = document.getElementById("artist").value;
+	var albumInput = document.getElementById("album").value;
+	var contentToAdd = songInput + " - " + artistInput + " - " + albumInput;
+	if (songInput !== "" && artistInput !== "" && albumInput !== "") {
+		mainContent.innerHTML += `<h2>${contentToAdd}</h2>`;
+	}
+	else {
+		alert("You missed a field! Try again.");
+	}
+});
 
