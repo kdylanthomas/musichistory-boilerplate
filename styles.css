@@ -18,7 +18,7 @@
 	border: 2px solid black;
     height: 400px;
     box-sizing: border-box;
- 	margin-right: 0.5%;
+ 	margin-right: 1%;
 }
 
 #right-side {
@@ -31,7 +31,7 @@
 }
 
 #playlist-view {
-	padding-right: 0.5%;
+	padding-right: 1%;
 }
 
 /* adds fake pipe characters to nav bar and song info */
