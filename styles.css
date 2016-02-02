@@ -3,26 +3,22 @@
 	font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
 }
 
+
 /* layout & styling of three main divs */
 #top {
 	background-color: #FFB4B0; 
 	border: 2px solid black;
 	text-align: left;
 	padding: 15px;
-	margin: auto;
-    width: 63.3%;
 }
 
 #left-side {
 	background-color: #4DD7FA;
 	text-align: left;
 	border: 2px solid black;
-	float: left;
-	width: 15%;
-    padding: 5px 0 25px 10px;
-    margin-left: 17%;
-    margin-top: 1%;
-    height: 350px;
+    height: 400px;
+    box-sizing: border-box;
+ 	margin-right: 0.5%;
 }
 
 #right-side {
@@ -30,12 +26,12 @@
 	text-align: left;
 	border: 2px solid black;
 	color: #785616;
-	float: right;
-	width: 47%;
-	padding: 5px 0 25px 20px;
-    margin-right: 17%;
-    margin-top: 1%;
-    height: 350px;
+    height: 400px;
+    box-sizing: border-box;
+}
+
+#playlist-view {
+	padding-right: 0.5%;
 }
 
 /* adds fake pipe characters to nav bar and song info */
@@ -51,6 +47,10 @@
 
 .needspadding {
 	padding-left: 5px;
+}
+
+#add-music, #view-music {
+	text-decoration: none;
 }
 
 /* made button wider */
@@ -94,18 +94,9 @@ h2 {
     padding: 10px 0 5px;
 }
 
-/* checkboxes in columns w/ styling */
-.checkboxes {
-    margin: 2% 0 10% -20%;
-}
-
-.checkboxes li {
-    display: inline;
-    float: left;
-    width: 40%;
-    list-style: none;
-    margin-left: -5%;
-    font-size: 0.90em;
+.checkbox-item {
+	display: inline-block;
+	width: 45%;
 }
 
 
@@ -144,9 +135,9 @@ label {
 	width: 100px;
 }
 
-input {
+.textbox-input {
 	width: 150px;
-	height: 15px;
+	height: 25px;
 	border: 2px solid black;
 }
 
@@ -155,9 +146,6 @@ input {
 	position: relative;
 	left: 0;
 }
-
-
-
 
 
 

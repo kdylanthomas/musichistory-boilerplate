@@ -4,20 +4,23 @@
 <head>
   <meta charset="utf-8">
   <title>Music History</title>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
   <link rel="stylesheet" href="styles.css">
 </head>
 
-<body>
+<body class="container-fluid">
 <!-- create a nav bar w/ view music, add music, profile -->
 <!-- probably needs to clear top in css -->
-	<nav id="top">
-		<a href="#" class="needspipe" id="view-music">View Music</a>
-		<a href="#" id="add-music">Add Music</a>
-	</nav>
+	<div class="row">
+		<nav id="top" class="col-md-8 col-md-offset-2">
+			<a href="#" class="needspipe" id="view-music">View Music</a>
+			<a href="#" id="add-music">Add Music</a>
+		</nav>
+	</div>
 
 <!-- playlist view  -->
-	<section id="playlist-view">
-		<div id="left-side">
+	<section id="playlist-view" class="row">
+		<div id="left-side" class="col-md-3 col-md-offset-2">
 			<!-- song length scrollbar -->
 			<span class="userselects">Song length:</span>
 			<input id="slider" type="range"  min="0" max="100" />
@@ -41,43 +44,52 @@
 				</select>
 			<!-- genre checkbox options,  -->
 			<span class="userselects">Genre:</span>
-				<ul class="checkboxes">
-					<li><input type="checkbox" id="Electronic" value="electronic"><label for="Electronic">Electronic</label></li>
-					<li><input type="checkbox" id="Americana" value="americana"> <label for="Americana">Americana</label></li>
-					<li><input type="checkbox" id="Indie" value="indie"> <label for="Indie">Indie</label></li>
-					<li><input type="checkbox" id="Funk" value="funk"> <label for="Funk">Funk</label></li>
-					<li><input type="checkbox" id="Rock" value="rock"> <label for="Rock">Rock</label></li>
-					<li><input type="checkbox" id="Dancepunk" value="dancepunk"> <label for="Dancepunk">Dance Punk</label></li>
-				</ul>
+					<div class="checkbox-item">
+						<input type="checkbox" id="Electronic" value="electronic"><label for="Electronic">Electronic</label>
+					</div>
+					<div class="checkbox-item">
+						<input type="checkbox" id="Americana" value="americana"> <label for="Americana">Americana</label>
+					</div>
+					<div class="checkbox-item">
+						<input type="checkbox" id="Indie" value="indie"> <label for="Indie">Indie</label>
+					</div>
+					<div class="checkbox-item">
+						<input type="checkbox" id="Funk" value="funk"> <label for="Funk">Funk</label>
+					</div>
+					<div class="checkbox-item">
+						<input type="checkbox" id="Rock" value="rock"> <label for="Rock">Rock</label>
+					</div>
+					<div class="checkbox-item">
+						<input type="checkbox" id="Dancepunk" value="dancepunk"> <label for="Dancepunk">Dance Punk</label>
+					</div>
 			<!-- filter button -->
 			<button id="filter">Filter</button>
 		</div>
-
 	<!-- when you drop down select artist, right side div should show -->
-		<div id="right-side">
+		<div id="right-side" class="col-md-5">
 
 		</div>
 	</section>
-
 	<!-- add music view -->
 	<section id="form" class="hidden">
 		<div class="form-inputs">
 			<div class="row">
 				<label for="song">Song Name:</label>
-				<input type="text" name="song" id="song">
+				<input type="text" name="song" id="song" class="textbox-input">
 			</div>
 			<div class="row">
 				<label for="artist">Artist:</label>
-				<input type="text" name="artist" id="artist">
+				<input type="text" name="artist" id="artist" class="textbox-input">
 			</div>
 			<div class="row">
 				<label for="album">Album:</label>
-				<input type="text" name="album" id="album">	
+				<input type="text" name="album" id="album" class="textbox-input">	
 			</div>
 			<button id="add-song">Add</button>	
 		</div>
 	</section>
-
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script>
 	<script src="songs.js"></script>
 	<script src="add-music.js"></script>
 	<script src="view-music.js"></script>
