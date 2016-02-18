@@ -1,8 +1,8 @@
 /* assign font to whole page */
-* {
+body {
 	font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+/*	background: url('img/music-bg.png');*/
 }
-
 
 /* layout & styling of three main divs */
 #top {
@@ -13,6 +13,7 @@
 }
 
 #left-side {
+	/*background-color: rgba(71,46,26,0.8);*/
 	background-color: #4DD7FA;
 	text-align: left;
 	border: 2px solid black;
@@ -28,6 +29,7 @@
 	color: #785616;
     height: 400px;
     box-sizing: border-box;
+    overflow: scroll;
 }
 
 #playlist-view {
@@ -81,10 +83,10 @@ label {
 	font-size: 0.9em;
 }
 
-h2 {
+/*h2 {
 	font-weight: 400;
 	font-size: 1em;
-}
+}*/
 
 /* artist, album, genre headers listed above selects */
 .userselects {
@@ -119,7 +121,7 @@ h2 {
 
 /* add music form */
 
-.form-inputs {
+.inputs {
 	width: 63.3%;
 	margin: 4% auto;
 	text-align: center;

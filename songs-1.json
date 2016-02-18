@@ -1,0 +1,34 @@
+{
+	"songs": [
+	{
+		"title": "Let's Get Busy",
+		"artist": "Pretty Lights",
+		"album": "A Color Map Of The Sun",
+		"genre": "Electronic"
+	},
+	{
+		"title": "A Fine Way To Die",
+		"artist": "Griz",
+		"album": "Say It Loud",
+		"genre": "Funk"
+	},
+	{
+		"title": "I Would Be Sad",
+		"artist": "The Avett Brothers",
+		"album": "Emotionalism",
+		"genre": "Americana"
+	},
+	{
+		"title": "Holland, 1945",
+		"artist": "Neutral Milk Hotel",
+		"album": "In The Aeroplane Over The Sea",
+		"genre": "Indie"
+	},
+	{
+		"title": "Dance Yrself Clean",
+		"artist": "LCD Soundsystem",
+		"album": "This Is Happening",
+		"genre": "Dance Punk"
+	}
+	]
+}
