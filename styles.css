@@ -1,78 +1,6 @@
-/* assign font to whole page */
 body {
 	font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
-/*	background: url('img/music-bg.png');*/
-}
-
-/* layout & styling of three main divs */
-#top {
-	background-color: #FFB4B0; 
-	border: 2px solid black;
-	text-align: left;
-	padding: 15px;
-}
-
-#left-side {
-	/*background-color: rgba(71,46,26,0.8);*/
-	background-color: #4DD7FA;
-	text-align: left;
-	border: 2px solid black;
-    height: 400px;
-    box-sizing: border-box;
- 	margin-right: 1%;
-}
-
-#right-side {
-	background-color: #FEFAC0;
-	text-align: left;
-	border: 2px solid black;
-	color: #785616;
-    height: 400px;
-    box-sizing: border-box;
-    overflow: scroll;
-}
-
-#playlist-view {
-	padding-right: 1%;
-}
-
-/* adds fake pipe characters to nav bar and song info */
-.needspipe {
-	border-right: 2px solid black;
-	padding-right: 5px;
-}
-
-.needswidepipe {
-	border-right: 1.5px solid black;
-	padding-right: 10px;
-}
-
-.needspadding {
-	padding-left: 5px;
-}
-
-#add-music, #view-music {
-	text-decoration: none;
-}
-
-/* made button wider */
-button {
-    width: 50%;
-    border: 2px solid black;
-    border-radius: 5px;
-    background-color: #E6E6E6;
-    padding: 2px 0;
-    font-size: 1.05em;
-    /* centers the button */
-    position: relative;
-    left: 20%;
-    margin: 5% 0 -5% 0;
-}
-
-/* trying to replicate mockup font settings */
-span {
-	color: #000;
-	font-weight: 200;
+	background: url('img/music-bg.png');
 }
 
 a, span {
@@ -83,12 +11,57 @@ label {
 	font-size: 0.9em;
 }
 
-/*h2 {
-	font-weight: 400;
-	font-size: 1em;
-}*/
 
-/* artist, album, genre headers listed above selects */
+/* HIDDEN CLASSES FOR SPA */
+.hidden {
+	display: none;
+}
+
+/* NAV BAR */
+#top {
+	background-color: rgba(51,51,51,0.9);
+	margin-top: 2%;
+	border-radius: 20px 20px 0 0;
+	border: 1px solid black;
+	text-align: left;
+	padding: 15px;
+}
+
+#top a {
+	text-decoration: none;
+	color:  rgb(200,200,200);
+	padding-right: 2%;
+}
+
+
+/* LEFT SIDE W/ SELECTS */
+#left-side {
+	background-color: rgba(51,51,51,0.9);
+	color: rgb(200,200,200);
+	border-radius: 0 0 0 20px;
+	text-align: left;
+	border: 1px solid black;
+    height: 400px;
+    box-sizing: border-box;
+ 	margin-right: 1%;
+}
+
+/* filter button */
+button {
+    width: 50%;
+    border: 2px solid black;
+    border-radius: 5px;
+    background-color: #E6E6E6;
+    color: #000;
+    padding: 2px 0;
+    font-size: 1.05em;
+    /* centers the button */
+    position: relative;
+    left: 20%;
+    margin: 5% 0 -5% 0;
+}
+
+/* artist, album, genre headers */
 .userselects {
 	font-size: 0.9em;
 	font-weight: 400;
@@ -96,30 +69,70 @@ label {
     padding: 10px 0 5px;
 }
 
+/* checkboxes */
 .checkbox-item {
 	display: inline-block;
-	width: 45%;
 }
 
-
+/* dropdowns */
 .dropdowns {
 	border: 2px solid black;
+	color: #000;
 	font-size: 0.85em;
 	width: 90%;
 }
 
+/* slider */
 #slider {
 	width: 80%;
 }
 
-/* hidden classes for SPA */
+/* RIGHT SIDE W/ SONGS */
+#right-side {
+	background-color: rgba(51,51,51,0.9);
+	color: rgb(200,200,200);
+	border-radius: 0 0 20px 0;
+	text-align: left;
+	border: 1px solid black;
+    height: 400px;
+    box-sizing: border-box;
+    overflow: scroll;
+}
 
-.hidden {
-	display: none;
+/* dynamically added song divs*/
+.song-list {
+	color: rgb(210,210,210);
+}
+
+/* pads left side from right side */
+#playlist-view {
+	padding-right: 1%;
 }
 
 
-/* add music form */
+/* ADD MUSIC VIEW */
+label {
+	text-align: left;
+	display: inline-block;
+	width: 100px;
+}
+
+/* add song button */
+#add-song {
+	width: 15%;
+	position: relative;
+	left: 0;
+}
+
+.textbox-input {
+	width: 150px;
+	height: 25px;
+	border: 2px solid black;
+}
+
+.inputs label {
+	color: #7FE8D1;
+}
 
 .inputs {
 	width: 63.3%;
@@ -130,25 +143,6 @@ label {
 .row {
 	padding-bottom: 1%;
 }
-
-label {
-	text-align: left;
-	display: inline-block;
-	width: 100px;
-}
-
-.textbox-input {
-	width: 150px;
-	height: 25px;
-	border: 2px solid black;
-}
-
-#add-song {
-	width: 15%;
-	position: relative;
-	left: 0;
-}
-
 
 
 

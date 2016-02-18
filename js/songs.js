@@ -12,11 +12,11 @@ function sendToOutput(songData) {
 function outputSongs(songs) {
 	$(songs).each(function(i, currSong) {
 		$('#right-side').append(
-			`<div>
-				<h2>${currSong.title}</h2>
-				<h3>${currSong.artist}</h3>
-				<h4>${currSong.album}</h4>
-				<h4>${currSong.genre}</h4>
+			`<div class="song-list">
+				<h5>${currSong.title}</h5>
+				<span>${currSong.artist}</span> -
+				<span>${currSong.album}</span> -
+				<span>${currSong.genre}</span>
 			</div>`
 		);
 	})
