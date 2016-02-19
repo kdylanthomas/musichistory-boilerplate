@@ -1,3 +1,4 @@
+"use strict";
 // page visibility
 $('#add-music').on('click', function () {
 	$('#playlist-view').addClass('hidden');

@@ -1,6 +1,6 @@
 body {
 	font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
-	background: url('img/music-bg.png');
+	background: url('img/music-bg.png'),;
 }
 
 a, span {
@@ -43,11 +43,11 @@ label {
 	border: 1px solid black;
     height: 400px;
     box-sizing: border-box;
- 	margin-right: 1%;
+ 	margin-right: 0.5%;
 }
 
-/* filter button */
-button {
+/* add and filter buttons */
+.main-button {
     width: 50%;
     border: 2px solid black;
     border-radius: 5px;
@@ -60,6 +60,7 @@ button {
     left: 20%;
     margin: 5% 0 -5% 0;
 }
+
 
 /* artist, album, genre headers */
 .userselects {
@@ -96,12 +97,14 @@ button {
 	border: 1px solid black;
     height: 400px;
     box-sizing: border-box;
-    overflow: scroll;
+    overflow-y: scroll;
+    padding: 1%;
 }
 
 /* dynamically added song divs*/
 .song-list {
 	color: rgb(210,210,210);
+	padding-left: 1%;
 }
 
 /* pads left side from right side */
@@ -110,11 +113,43 @@ button {
 }
 
 
+/* single song buttons */
+.delete-single {
+	max-width: 50px;
+	height: 20px;
+	font-size: 0.8em;
+	color: #000;
+}
+
+/* more button container */
+#more-button {
+	padding-top: 5%;
+	text-align: center;
+}
+
+/* more songs button */
+#more-songs {
+	width: 25%;
+    border: 2px solid black;
+    border-radius: 5px;
+    background-color: #E6E6E6;
+    color: #000;
+    padding: 2px 0;
+    font-size: 1.05em;
+}
+
+
 /* ADD MUSIC VIEW */
 label {
 	text-align: left;
 	display: inline-block;
 	width: 100px;
+}
+
+#success-msg {
+	color: #88FAE2;
+	font-style: italic;
+	margin-top: 2%;
 }
 
 /* add song button */

@@ -1,0 +1,28 @@
+{
+	"songs": [
+	{
+		"title": "Chasing Heaven",
+		"artist": "Bassnectar",
+		"album": "Into The Sun",
+		"genre": "Electronic"
+	},
+	{
+		"title": "Parachute",
+		"artist": "Chris Stapleton",
+		"album": "Traveller",
+		"genre": "Americana"
+	},
+	{
+		"title": "Rye Whiskey",
+		"artist": "Punch Brothers",
+		"album": "Antifogmatic",
+		"genre": "Americana"
+	},
+	{
+		"title": "I Can Change",
+		"artist": "LCD Soundsystem",
+		"album": "This Is Happening",
+		"genre": "Dance Punk"
+	}
+	]
+}
