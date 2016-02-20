@@ -4,25 +4,33 @@
 		"title": "Chasing Heaven",
 		"artist": "Bassnectar",
 		"album": "Into The Sun",
-		"genre": "Electronic"
+		"genre": "Electronic",
+		"artist_id": "bas",
+		"album_id": "int"
 	},
 	{
 		"title": "Parachute",
 		"artist": "Chris Stapleton",
 		"album": "Traveller",
-		"genre": "Americana"
+		"genre": "Americana",
+		"artist_id": "chr",
+		"album_id": "tra"
 	},
 	{
 		"title": "Rye Whiskey",
 		"artist": "Punch Brothers",
 		"album": "Antifogmatic",
-		"genre": "Americana"
+		"genre": "Americana",
+		"artist_id": "pun",
+		"album_id": "ant"
 	},
 	{
 		"title": "I Can Change",
 		"artist": "LCD Soundsystem",
 		"album": "This Is Happening",
-		"genre": "Dance Punk"
+		"genre": "Dance Punk",
+		"artist_id": "lcd",
+		"album_id": "thi"
 	}
 	]
 }

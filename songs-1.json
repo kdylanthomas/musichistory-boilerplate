@@ -4,31 +4,41 @@
 		"title": "Let's Get Busy",
 		"artist": "Pretty Lights",
 		"album": "A Color Map Of The Sun",
-		"genre": "Electronic"
+		"genre": "Electronic",
+		"artist_id": "pre",
+		"album_id": "col"
 	},
 	{
 		"title": "A Fine Way To Die",
 		"artist": "Griz",
 		"album": "Say It Loud",
-		"genre": "Funk"
+		"genre": "Funk",
+		"artist_id": "gri",
+		"album_id": "say"
 	},
 	{
 		"title": "I Would Be Sad",
 		"artist": "The Avett Brothers",
 		"album": "Emotionalism",
-		"genre": "Americana"
+		"genre": "Americana",
+		"artist_id": "ave",
+		"album_id": "emo"
 	},
 	{
 		"title": "Holland, 1945",
 		"artist": "Neutral Milk Hotel",
 		"album": "In The Aeroplane Over The Sea",
-		"genre": "Indie"
+		"genre": "Indie",
+		"artist_id": "neu",
+		"album_id": "aer"
 	},
 	{
 		"title": "Dance Yrself Clean",
 		"artist": "LCD Soundsystem",
 		"album": "This Is Happening",
-		"genre": "Dance Punk"
+		"genre": "Dance Punk",
+		"artist_id": "lcd",
+		"album_id": "thi"
 	}
 	]
 }
