@@ -1,11 +1,18 @@
 "use strict";
+let songs;
+let artistArray = [];
 // XHR for songs-1.json
 $.ajax({
 	url:'songs-1.json'
 }).done(sendToOutput);
 
 function sendToOutput(songData) {
-	let songs = songData.songs;
+	songs = songData.songs;
+	// build artist array for single delete functionality later
+	$(songs).each((i, song) => {
+		artistArray.push(song.artist);
+	});
+	console.log(artistArray);
 	createUserSelects(songs);
 	outputSongs(songs);
 }
@@ -80,19 +87,43 @@ $('.textbox-input').on('keyup', function() {
 	$('#success-msg').html('');
 });
 
-// delete & more songs button functionality (event bubbling)
+// delete & more songs button functionality (event bubbling on right side)
 $('#right-side').on('click', function(e) {
+	// delete single song button--kind of works but not really
 	if ($(e.target).hasClass('delete-single')) {
 		// need to remove artist and album from options,
 		// but only if it isn't still needed for another song (in progress)
 		let artist = $(e.target).parent().find('.list-artist').html();
-		// this if statement removes all options from dropdown...why?
-		// if ($('#artist-dropdown').has('option').html(artist)) {
-			console.log('artist', artist);
-		// }
+		console.log("artist next to delete button", artist);
+		let options = $('#artist-dropdown').children('option');
+		console.log("options", options);
+		// for each option,
+		$(options).each((i, option) => {
+			// remove artist from option dropdown only if one instance of artist is on song list
+			// check if option matches an artist that was on delete button
+			if ($(option).html() === artist) {
+				// then, make sure the artist doesn't exist multiple times in the array
+				let sortedArtists = $(artistArray).sort();
+				console.log("wat", sortedArtists);
+				for (let i = 0; i < sortedArtists.length; i++) {
+					if (sortedArtists[i] === sortedArtists[i+1] && sortedArtists[i] === artist) {
+						// remove one instance of the artist from the array
+						sortedArtists.splice(i, 1);
+						// update artistArray to reflect removed instance of artist
+						artistArray = sortedArtists;
+						console.log("new artist array", artistArray);
+						// remove song div, but return instead of removing option element
+						$(e.target).parent().remove();
+						return;
+					}
+				};
+				$(option).remove();
+			};
+		});
 		$(e.target).parent().remove();
-
 	}
+
+	// see more songs button
 	if (e.target.id === "more-songs") {
 		console.log('more songs');
 		$.ajax({
