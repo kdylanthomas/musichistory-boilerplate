@@ -21,11 +21,7 @@ function sendToOutput(songData) {
 function createUserSelects(songs) {
 	$(songs).each((i, currSong) => {
 		// if you can't find an option el with the artistID on it, make a new option el
-		// console.log($("#artist-dropdown").find("#"+currSong.artist_id).length);
-		// console.log($("#artist-dropdown").has("#"+currSong.artist_id).length);
-
 		if (!$("#artist-dropdown").find("#"+currSong.artist_id).length) {
-		// if (!$("#artist-dropdown").find(['value=currSong.artist']).length) {
 			$("#artist-dropdown").append(`<option id="${currSong.artist_id}" value="${currSong.artist}">${currSong.artist}</option>`);
 		}
 		if (!$("#album-dropdown").find("#"+currSong.album_id).length) {
