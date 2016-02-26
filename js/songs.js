@@ -12,7 +12,7 @@ function sendToOutput(songData) {
 	$(songs).each((i, song) => {
 		artistArray.push(song.artist);
 	});
-	console.log(artistArray);
+	console.log("artist array", artistArray);
 	createUserSelects(songs);
 	outputSongs(songs);
 }
@@ -21,11 +21,15 @@ function sendToOutput(songData) {
 function createUserSelects(songs) {
 	$(songs).each((i, currSong) => {
 		// if you can't find an option el with the artistID on it, make a new option el
+		// console.log($("#artist-dropdown").find("#"+currSong.artist_id).length);
+		// console.log($("#artist-dropdown").has("#"+currSong.artist_id).length);
+
 		if (!$("#artist-dropdown").find("#"+currSong.artist_id).length) {
-			$("#artist-dropdown").append(`<option id=${currSong.artist_id} val=${currSong.artist_id}>${currSong.artist}</option>`);
+		// if (!$("#artist-dropdown").find(['value=currSong.artist']).length) {
+			$("#artist-dropdown").append(`<option id="${currSong.artist_id}" value="${currSong.artist}">${currSong.artist}</option>`);
 		}
 		if (!$("#album-dropdown").find("#"+currSong.album_id).length) {
-			$("#album-dropdown").append(`<option id=${currSong.album_id} val=${currSong.album_id}>${currSong.album}</option>`);
+			$("#album-dropdown").append(`<option id=${currSong.album_id} value="${currSong.album}">${currSong.album}</option>`);
 		}
 	});
 }
@@ -48,7 +52,7 @@ function outputSongs(songs) {
 	// console.log("true?", $('#right-side').has('#more-songs').length);
 	// console.log("false", !$('#right-side').has('#more-songs'));
 	// console.log("true?", !$('#right-side').has('#more-songs').length);
-
+	// console.log("length", $('#right-side #more-songs').length);
 	// if more songs button does not exist, create it and append it
 	if (!$('#right-side').has('#more-songs').length) {
 		$('#right-side').append(`<div id="more-button"><button id="more-songs">See More</button></div>`);
@@ -72,6 +76,7 @@ $('#add-song').on('click', function() {
 	};
 	console.log(newSong);
 	if (newSong.title && newSong.artist && newSong.album) {
+		artistArray.push(newSong.artist);
 		createUserSelects(newSong);
 		outputSongs(newSong);
 		$('#song').val('');
@@ -89,7 +94,7 @@ $('.textbox-input').on('keyup', function() {
 
 // delete & more songs button functionality (event bubbling on right side)
 $('#right-side').on('click', function(e) {
-	// delete single song button--kind of works but not really
+	// delete single song button--seems to work, confused about line 107
 	if ($(e.target).hasClass('delete-single')) {
 		// need to remove artist and album from options,
 		// but only if it isn't still needed for another song (in progress)
@@ -111,19 +116,26 @@ $('#right-side').on('click', function(e) {
 						sortedArtists.splice(i, 1);
 						// update artistArray to reflect removed instance of artist
 						artistArray = sortedArtists;
-						console.log("new artist array", artistArray);
+						// console.log("sorted", sortedArtists);
+						// console.log("new artist array", artistArray);
 						// remove song div, but return instead of removing option element
 						$(e.target).parent().remove();
 						return;
+					} else if (sortedArtists[i] === artist) {
+						// remove artist from sorted array
+						sortedArtists.splice(i, 1);
+						// update artistArray
+						artistArray = sortedArtists;
 					}
 				};
+				console.log("artist array", artistArray);
 				$(option).remove();
 			};
 		});
 		$(e.target).parent().remove();
 	}
 
-	// see more songs button
+	// see more songs button (maybe give this its own function...)
 	if (e.target.id === "more-songs") {
 		console.log('more songs');
 		$.ajax({
@@ -134,8 +146,8 @@ $('#right-side').on('click', function(e) {
 
 // filter button functionality
 $('#filter').on('click', function() {
-	console.log($('#artist-dropdown :selected').val());
-	console.log($('#album-dropdown :selected').val());
-	// not sure what this is doing
-	console.log($('input:checkbox').prop('checked'));
+	console.log("selected artist", $('#artist-dropdown :selected').val());
+	console.log("selected album", $('#album-dropdown :selected').val());
+	// not sure what this is doing...looks like it checks if the genre you checked matches the artist/album (bool)
+	console.log("selected checkboxes", $('input:checkbox').prop('checked'));
 })
