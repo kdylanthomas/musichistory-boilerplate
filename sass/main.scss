@@ -1,6 +1,12 @@
+@import 'add-view';
+
+$div-bg: rgba(51,51,51,0.9);
+$main-txt: rgb(200,200,200);
+$button-color: #E6E6E6;
+
 body {
 	font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
-	background: url('img/music-bg.png'),;
+	background: url('../img/music-bg.png');
 }
 
 a, span {
@@ -19,25 +25,25 @@ label {
 
 /* NAV BAR */
 #top {
-	background-color: rgba(51,51,51,0.9);
+	background-color: $div-bg;
 	margin-top: 2%;
 	border-radius: 20px 20px 0 0;
 	border: 1px solid black;
 	text-align: left;
 	padding: 15px;
-}
 
-#top a {
+	a {
 	text-decoration: none;
-	color:  rgb(200,200,200);
-	padding-right: 2%;
-}
+	color:  $main-txt;
+	padding-right: 2%; 
+	}
 
+}
 
 /* LEFT SIDE W/ SELECTS */
 #left-side {
-	background-color: rgba(51,51,51,0.9);
-	color: rgb(200,200,200);
+	background-color: $div-bg;
+	color: $main-txt;
 	border-radius: 0 0 0 20px;
 	text-align: left;
 	border: 1px solid black;
@@ -51,7 +57,7 @@ label {
     width: 50%;
     border: 2px solid black;
     border-radius: 5px;
-    background-color: #E6E6E6;
+    background-color: $button-color;
     color: #000;
     padding: 2px 0;
     font-size: 1.05em;
@@ -90,8 +96,8 @@ label {
 
 /* RIGHT SIDE W/ SONGS */
 #right-side {
-	background-color: rgba(51,51,51,0.9);
-	color: rgb(200,200,200);
+	background-color: $div-bg;
+	color: $main-txt;
 	border-radius: 0 0 20px 0;
 	text-align: left;
 	border: 1px solid black;
@@ -103,7 +109,7 @@ label {
 
 /* dynamically added song divs*/
 .song-list {
-	color: rgb(210,210,210);
+	color: $main-txt;
 	padding-left: 1%;
 }
 
@@ -132,53 +138,8 @@ label {
 	width: 25%;
     border: 2px solid black;
     border-radius: 5px;
-    background-color: #E6E6E6;
+    background-color: $button-color;
     color: #000;
     padding: 2px 0;
     font-size: 1.05em;
 }
-
-
-/* ADD MUSIC VIEW */
-label {
-	text-align: left;
-	display: inline-block;
-	width: 100px;
-}
-
-#success-msg {
-	color: #88FAE2;
-	font-style: italic;
-	margin-top: 2%;
-}
-
-/* add song button */
-#add-song {
-	width: 15%;
-	position: relative;
-	left: 0;
-}
-
-.textbox-input {
-	width: 150px;
-	height: 25px;
-	border: 2px solid black;
-}
-
-.inputs label {
-	color: #7FE8D1;
-}
-
-.inputs {
-	width: 63.3%;
-	margin: 4% auto;
-	text-align: center;
-}
-
-.row {
-	padding-bottom: 1%;
-}
-
-
-
-

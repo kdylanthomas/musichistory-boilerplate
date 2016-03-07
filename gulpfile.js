@@ -1,16 +1,20 @@
 var gulp = require('gulp');
-var jshint = require('gulp-jshint');
 var watch = require('gulp-watch');
+var sass = require('gulp-sass');
 
-gulp.task('default', ['lint', 'watch']);
+gulp.task('default', ['sass', 'watch']);
 
 gulp.task('watch', function() {
-  gulp.watch('js/*.js', ['lint']);
+  gulp.watch('sass/**/*.scss', ['sass']);
 });
 
 
-gulp.task('lint', function() {
-  return gulp.src('js/*.js')
-    .pipe(jshint())
-    .pipe(jshint.reporter('jshint-stylish'));
+gulp.task('sass', function () {
+  return gulp
+    // Find all `.scss` files from the `stylesheets/` folder
+    .src('sass/**/*.scss')
+    // Run Sass on those files
+    .pipe(sass())
+    // Write the resulting CSS in the output folder
+    .pipe(gulp.dest('./css'));
 });

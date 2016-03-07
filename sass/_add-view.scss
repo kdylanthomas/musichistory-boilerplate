@@ -1,0 +1,38 @@
+/* ADD MUSIC VIEW */
+label {
+	text-align: left;
+	display: inline-block;
+	width: 100px;
+}
+
+#success-msg {
+	color: #88FAE2;
+	font-style: italic;
+	margin-top: 2%;
+}
+
+/* add song button */
+#add-song {
+	width: 15%;
+	position: relative;
+	left: 0;
+}
+
+.textbox-input {
+	width: 150px;
+	height: 25px;
+	border: 2px solid black;
+}
+
+.inputs {
+	width: 63.3%;
+	margin: 4% auto;
+	text-align: center;
+	label {
+		color: #7FE8D1;
+	}
+}
+
+.row {
+	padding-bottom: 1%;
+}
