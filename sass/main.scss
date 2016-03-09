@@ -23,6 +23,22 @@ label {
 	display: none;
 }
 
+/* LOGIN CONTAINER */
+#login-container {
+	margin-top: 10%;
+	background-color: $div-bg;
+	border: 1px solid black;
+	border-radius: 20px;
+	h1 {
+		color: $button-color;
+		font-size: 1.25em;
+	}
+	button {
+		margin-top: 5%;
+	}
+}
+
+
 /* NAV BAR */
 #top {
 	background-color: $div-bg;
@@ -52,21 +68,33 @@ label {
  	margin-right: 0.5%;
 }
 
-/* add and filter buttons */
-.main-button {
-    width: 50%;
-    border: 2px solid black;
+// GENERAL BUTTON CLASS
+.button {
+	border: 2px solid black;
     border-radius: 5px;
     background-color: $button-color;
     color: #000;
     padding: 2px 0;
     font-size: 1.05em;
+}
+
+/* add and filter buttons */
+.main-button {
+	@extend .button;
+    width: 50%;
     /* centers the button */
     position: relative;
     left: 20%;
     margin: 5% 0 -5% 0;
 }
 
+// login button
+.login-button {
+	@extend .button;
+    width: 20%;
+    position: relative;
+    margin: 1% 0;
+}
 
 /* artist, album, genre headers */
 .userselects {

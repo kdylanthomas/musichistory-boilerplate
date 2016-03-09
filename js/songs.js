@@ -1,13 +1,29 @@
 "use strict";
-let songs;
+
+let songs = [];
 let artistArray = [];
+
+let selectedArtist;
+let selectedAlbum;
 // XHR for songs-1.json
 $.ajax({
-	url:'songs-1.json'
-}).done(sendToOutput);
+	url:'https://blistering-inferno-4535.firebaseio.com/songs/.json',
+	method: 'GET'
+}).done(manageSongData);
 
-function sendToOutput(songData) {
-	songs = songData.songs;
+function manageSongData(songList) {
+	console.log(songList);
+	for (let song in songList) {
+		let currentSong = songList[song];
+		currentSong.id = song;
+		songs.push(currentSong);
+	}
+	console.log(songs);
+	sendToOutput(songs);
+}
+
+function sendToOutput(songs) {
+	console.log(songs);
 	// build artist array for single delete functionality later
 	$(songs).each((i, song) => {
 		artistArray.push(song.artist);
@@ -34,7 +50,7 @@ function createUserSelects(songs) {
 function outputSongs(songs) {
 	$(songs).each((i, currSong) => {
 		$('#right-side').append(
-			`<div class="song-list">
+			`<div class="song-list" id=${currSong.id}>
 				<h5>${currSong.title}</h5>
 				<span class="list-artist">${currSong.artist}</span> -
 				<span class="list-album">${currSong.album}</span> -
@@ -43,21 +59,15 @@ function outputSongs(songs) {
 			</div>`
 		);
 	});
-	// WAT
-	// console.log("true?", $('#right-side').has('#more-songs'));
-	// console.log("true?", $('#right-side').has('#more-songs').length);
-	// console.log("false", !$('#right-side').has('#more-songs'));
-	// console.log("true?", !$('#right-side').has('#more-songs').length);
-	// console.log("length", $('#right-side #more-songs').length);
 	// if more songs button does not exist, create it and append it
-	if (!$('#right-side').has('#more-songs').length) {
-		$('#right-side').append(`<div id="more-button"><button id="more-songs">See More</button></div>`);
-	} else {
-		// if button already exists, move it to the end of the div
-		$('#more-button').appendTo('#right-side');
-		// disable button if songs-2.json has loaded
-		$('#more-songs').attr('disabled', 'disabled');
-	}
+	// if (!$('#right-side').has('#more-songs').length) {
+	// 	$('#right-side').append(`<div id="more-button"><button id="more-songs">See More</button></div>`);
+	// } else {
+	// 	// if button already exists, move it to the end of the div
+	// 	$('#more-button').appendTo('#right-side');
+	// 	// disable button if songs-2.json has loaded
+	// 	$('#more-songs').attr('disabled', 'disabled');
+	// }
 }
 
 // add button functionality
@@ -75,10 +85,16 @@ $('#add-song').on('click', function() {
 		artistArray.push(newSong.artist);
 		createUserSelects(newSong);
 		outputSongs(newSong);
-		$('#song').val('');
-		$('#artist').val('');
-		$('#album').val('');
-		$('#success-msg').html(`<p>Successfully added song</p>`);
+		$.ajax({
+			url: 'https://blistering-inferno-4535.firebaseio.com/songs/.json',
+			data: JSON.stringify(newSong),
+			method: 'POST'
+		}).done(() => {
+			$('#song').val('');
+			$('#artist').val('');
+			$('#album').val('');
+			$('#success-msg').html(`<p>Successfully added song</p>`);
+		});
 	} else {
 		alert("You missed a field! Try again.");
 	}
@@ -95,9 +111,14 @@ $('#right-side').on('click', function(e) {
 		// need to remove artist and album from options,
 		// but only if it isn't still needed for another song (in progress)
 		let artist = $(e.target).parent().find('.list-artist').html();
-		console.log("artist next to delete button", artist);
+		let id = $(e.target).parent().attr('id');
 		let options = $('#artist-dropdown').children('option');
-		console.log("options", options);
+		$.ajax({
+			url: `https://blistering-inferno-4535.firebaseio.com/songs/${id}.json`,
+			method: 'DELETE'
+		}).done(() => {
+			console.log('song deleted');
+		})
 		// for each option,
 		$(options).each((i, option) => {
 			// remove artist from option dropdown only if one instance of artist is on song list
@@ -112,8 +133,6 @@ $('#right-side').on('click', function(e) {
 						sortedArtists.splice(i, 1);
 						// update artistArray to reflect removed instance of artist
 						artistArray = sortedArtists;
-						// console.log("sorted", sortedArtists);
-						// console.log("new artist array", artistArray);
 						// remove song div, but return instead of removing option element
 						$(e.target).parent().remove();
 						return;
@@ -132,18 +151,56 @@ $('#right-side').on('click', function(e) {
 	}
 
 	// see more songs button (maybe give this its own function...)
-	if (e.target.id === "more-songs") {
-		console.log('more songs');
-		$.ajax({
-			url:'songs-2.json'
-		}).done(sendToOutput);
+	// if (e.target.id === "more-songs") {
+	// 	console.log('more songs');
+	// 	$.ajax({
+	// 		url:'songs-2.json'
+	// 	}).done(function (songList) {
+	// 		let songs = songList.songs;
+	// 		sendToOutput(songs);
+	// 	});
+	// }
+});
+
+$('#artist-dropdown').on('change', function () {
+	selectedArtist = $('#artist-dropdown :selected').val();
+	console.log(selectedArtist);
+	if (selectedArtist !== 'blank-artist') {
+		$('#album-dropdown').prop('disabled', 'true');
+	} else {
+		$('#album-dropdown').removeAttr('disabled');
+	}
+});
+
+$('#album-dropdown').on('change', function () {
+	selectedAlbum = $('#album-dropdown :selected').val();
+	if (selectedAlbum !== 'blank-album') {
+		$('#artist-dropdown').prop('disabled', 'true');
+	} else {
+		$('#artist-dropdown').removeAttr('disabled');
 	}
 });
 
 // filter button functionality
 $('#filter').on('click', function() {
-	console.log("selected artist", $('#artist-dropdown :selected').val());
-	console.log("selected album", $('#album-dropdown :selected').val());
+	if (selectedArtist !== 'blank-artist') {
+		$('.list-artist').each((i, currArtist) => {
+			console.log(selectedArtist);
+			if ($(currArtist).html() !== selectedArtist) {
+				$(currArtist).parent().hide();
+			} else {
+				$(currArtist).parent().show();
+			}
+		});
+	} else if (selectedAlbum !== 'blank-album') {
+	 	$('.list-album').each((i, currAlbum) => {
+			if ($(currAlbum).html() !== selectedAlbum && selectedAlbum !== 'blank-album') {
+				$(currAlbum).parent().hide();
+			} else {
+				$(currAlbum).parent().show();
+			}
+		});
+	}
 	// not sure what this is doing...looks like it checks if the genre you checked matches the artist/album (bool)
 	console.log("selected checkboxes", $('input:checkbox').prop('checked'));
 })

@@ -10,26 +10,48 @@
 
 <body class="container-fluid">
 <!-- nav bar w/ view music, add music, profile -->
-	<div class="row">
+	<div class="row nav-bar hidden">
 		<nav id="top" class="col-md-6 col-md-offset-3">
 			<a href="#" id="view-music">View Music</a>
 			<a href="#" id="add-music">Add Music</a>
+			<a href="#" id="logout">Log Out</a>
 		</nav>
 	</div>
 
 <!-- playlist view  -->
-	<section id="playlist-view" class="row">
+	<section id="login-view">
+		<div class="row">
+		<div id="login-container" class="col-md-4 col-md-offset-4">
+			<h1>Welcome to Music History.</h1>
+			<div class="inputs">
+				<div>
+					<label for="username">Username:</label>
+					<input type="email" name="username" id="username" class="textbox-input">
+				</div>
+				<div>
+					<label for="password">Password:</label>
+					<input type="password" minlength="3" name="password" id="password" class="textbox-input">
+				</div>
+				<button id="login" class="login-button">Log In</button>
+				<button id="register" class="login-button">Register</button>
+			</div>
+		</div>
+		</div>
+	</section>
+	<section id="playlist-view" class="row hidden">
 		<div id="left-side" class="col-md-2 col-md-offset-3">
-			<!-- song length scrollbar -->
+			<!-- song length scrollbar
 			<span class="userselects">Song length:</span>
 			<input id="slider" type="range"  min="0" max="100" />
 			<!-- artist dropdown -->
 			<span class="userselects">Artist:</span>
 				<select class="dropdowns" id="artist-dropdown">
+					<option value="blank-artist">Choose an artist...</option>
 				</select>
 			<!-- album dropdown -->
 			<span class="userselects">Album:</span>
 				<select class="dropdowns" id="album-dropdown">
+					<option value="blank-album">Choose an album...</option>
 				</select>
 			<!-- genre checkbox options  -->
 			<span class="userselects">Genre:</span>
@@ -87,10 +109,12 @@
 			<button id="add-song" class="main-button">Add</button>
 			<div id="success-msg"></div>
 		</div>
-	</section>
+	</section> -->
+	<script src="bower_components/firebase/firebase.js"></script>
 	<script src="bower_components/jquery/dist/jquery.min.js"></script>
 	<script src="bower_components/bootstrap/dist/js/bootstrap.min.js" crossorigin="anonymous"></script>
 	<script src="js/songs.js"></script>
 	<script src="js/switch-view.js"></script>
+	<script src="js/authenticate.js"></script>
 </body>
 </html>

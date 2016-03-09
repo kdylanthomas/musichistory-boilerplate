@@ -1,36 +1,36 @@
 {
 	"songs": [
-	{
-		"title": "Purple, Yellow, Red and Blue",
-		"artist": "Portugal, The Man",
-		"album": "Evil Friends",
-		"genre": "Indie",
-		"artist_id": "por",
-		"album_id": "evi"
-	},
-	{
-		"title": "Parachute",
-		"artist": "Chris Stapleton",
-		"album": "Traveller",
-		"genre": "Americana",
-		"artist_id": "chr",
-		"album_id": "tra"
-	},
-	{
-		"title": "Rye Whiskey",
-		"artist": "Punch Brothers",
-		"album": "Antifogmatic",
-		"genre": "Americana",
-		"artist_id": "pun",
-		"album_id": "ant"
-	},
-	{
-		"title": "I Can Change",
-		"artist": "LCD Soundsystem",
-		"album": "This Is Happening",
-		"genre": "Dance Punk",
-		"artist_id": "lcd",
-		"album_id": "thi"
-	}
+		{
+			"title": "Purple, Yellow, Red and Blue",
+			"artist": "Portugal, The Man",
+			"album": "Evil Friends",
+			"genre": "Indie",
+			"artist_id": "por",
+			"album_id": "evi"
+		},
+		{
+			"title": "Parachute",
+			"artist": "Chris Stapleton",
+			"album": "Traveller",
+			"genre": "Americana",
+			"artist_id": "chr",
+			"album_id": "tra"
+		},
+		{
+			"title": "Rye Whiskey",
+			"artist": "Punch Brothers",
+			"album": "Antifogmatic",
+			"genre": "Americana",
+			"artist_id": "pun",
+			"album_id": "ant"
+		},
+		{
+			"title": "I Can Change",
+			"artist": "LCD Soundsystem",
+			"album": "This Is Happening",
+			"genre": "Dance Punk",
+			"artist_id": "lcd",
+			"album_id": "thi"
+		}
 	]
 }
