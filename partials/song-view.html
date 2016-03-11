@@ -1,0 +1,35 @@
+<section>
+	<a href="#/songs/new">Add Song</a>
+
+	<div class="dropdown">
+		<button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+	    Choose an Artist
+	    	<span class="caret"></span>
+	 	</button>
+		<ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
+	    	<li ng-repeat="song in songs | unique: 'artist' " value="">
+	    		<a ng-click="filterArtists(song)" ng-model="selectedArtist">{{ song.artist }}</a>
+	    	</li>
+	  	</ul>
+	</div>
+
+	<div class="dropdown">
+		<button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+	    Choose an Album
+	    	<span class="caret"></span>
+	 	</button>
+		<ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
+	    	<li ng-repeat="song in songs | unique: 'album' "value="">
+	    		<a ng-click="filterAlbums(song)">{{ song.album }}</a>
+	    	</li>
+	  	</ul>
+	</div>
+
+	<div ng-repeat="song in songs | filter: selectedArtist || selectedAlbum " class="song-list">
+		<a href="#/songs/{{ song.id }}">{{ song.title }}</a>
+		<p>{{ song.artist }}</p>
+		<p>{{ song.album }}</p>
+		<p>{{ song.genre }}</p>
+		<button class="delete-single" id="{{ song.id }}" ng-click="clickDelete($event)">Delete</button>
+	</div>
+</section>

@@ -1,0 +1,27 @@
+<section>
+	<a href="#/songs/">View Songs</a>
+	<div>
+		<label for="song">Song Name:</label>
+		<input type="text" name="song" id="song" class="textbox-input" ng-model="newSong.title">
+	</div>
+	<div>
+		<label for="artist">Artist:</label>
+		<input type="text" name="artist" id="artist" class="textbox-input" ng-model="newSong.artist">
+	</div>
+	<div>
+		<label for="album">Album:</label>
+		<input type="text" name="album" id="album" class="textbox-input" ng-model="newSong.album">
+	</div>
+	<div>
+		<label for="genre">Genre:</label>
+		<select name="genre" id="genre">
+			<option value="electronic">Electronic</option>
+			<option value="americana">Americana</option>
+			<option value="indie">Indie</option>
+			<option value="funk">Funk</option>
+			<option value="rock">Rock</option>
+			<option value="dancepunk">Dance Punk</option>
+		</select>
+	</div>
+	<button id="add-song" ng-click="storeUserInputs()">Add</button>
+</section>
