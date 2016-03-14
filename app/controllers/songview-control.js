@@ -1,48 +1,57 @@
+'use strict';
+
 app.controller("SongViewCtrl", [
   "$scope",
   "get-songs",
   "delete-song",
+  "authenticate",
 
-    function ($scope, getSongs, deleteSong) {
+    function ($scope, getSongs, deleteSong, authenticate) {
         getSongs().then(
-            function (songArray) {
-                convertObjectToArray(songArray);
-            },
-            function (error) {
-                console.log("nope sorry");
-            }
+            (songArray) => convertObjectToArray(songArray),
+            (error) => console.log("nope sorry")
         );
 
-        function convertObjectToArray (obj) {
-            var newArray = [];
-            for (var key in obj) {
+        let convertObjectToArray = (obj) => {
+            let newArray = [];
+            for (let key in obj) {
                 obj[key].id = key;
                 newArray.push(obj[key]);
             }
             $scope.songs = newArray;
         }
 
-        $scope.clickDelete = function (e) {
-            var id = e.target.id;
+        $scope.clickDelete = (e) => {
+            let id = e.target.id;
             deleteSong(id)
-                .then(function () {
-                    return getSongs()
-                }).then(function (songArray) {
-                    convertObjectToArray(songArray);
-                });
+                .then(
+                    () => getSongs(),
+                    (error) => console.log('could not delete song')
+                ).then(
+                    (songArray) => convertObjectToArray(songArray),
+                    (error) => console.log('could not get songs from Firebase')
+                )
         };
 
-        $scope.filterArtists = function (song) {
+        $scope.filterArtists = (song) => {
             $scope.selectedArtist = song.artist;
             $scope.selectedAlbum = "";
-            console.log($scope.selectedArtist);
             return $scope.selectedArtist;
         }
 
-        $scope.filterAlbums = function (song) {
+        $scope.filterAlbums = (song) => {
             $scope.selectedAlbum = song.album;
             $scope.selectedArtist = "";
             return $scope.selectedAlbum;
         }
+
+        $scope.logout = () => authenticate.logoutUser();
+
+        $scope.unfilter = () => {
+            console.log('unfiltering');
+            $scope.selectedArtist = "";
+            $scope.selectedAlbum = "";
+        }
+
     }]
 );

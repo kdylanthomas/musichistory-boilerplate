@@ -1,7 +1,7 @@
 <section>
-	<a href="#/songs/new">Add Song</a>
+	<div ng-include="'partials/nav.html'"></div>
 
-	<div class="dropdown">
+	<div class="dropdown" style="display:inline-block;">
 		<button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
 	    Choose an Artist
 	    	<span class="caret"></span>
@@ -13,7 +13,7 @@
 	  	</ul>
 	</div>
 
-	<div class="dropdown">
+	<div class="dropdown" style="display:inline-block;">
 		<button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
 	    Choose an Album
 	    	<span class="caret"></span>
@@ -23,6 +23,12 @@
 	    		<a ng-click="filterAlbums(song)">{{ song.album }}</a>
 	    	</li>
 	  	</ul>
+	</div>
+	
+	<div style="display:inline-block;">
+		<button class="btn btn-default" type="button" ng-click="unfilter()">
+	    Unfilter
+	 	</button>
 	</div>
 
 	<div ng-repeat="song in songs | filter: selectedArtist || selectedAlbum " class="song-list">

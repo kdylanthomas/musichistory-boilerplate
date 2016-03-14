@@ -1,14 +1,13 @@
-app.factory("delete-song", function($q, $http) {
+'use strict';
 
-    function deleteSong (id) {
+app.factory("delete-song", ($q, $http) => {
+
+    let deleteSong = (id) => {
         return $q(function(resolve, reject) {
             $http.delete(`https://blistering-inferno-4535.firebaseio.com/songs/${id}.json`)
-            .success(function(song) {
-                console.log("song deleted");
-                resolve(song);
-                },function(error) {
-                    reject(error);
-                }
+            .success(
+                (song) => resolve(song),
+                (error) => reject(error)
             );
         });
     }

@@ -1,9 +1,12 @@
+'use strict';
+
 app.controller("AddSongCtrl", [
     "$scope",
     "add-song",
     "get-songs",
+    "authenticate",
 
-    function ($scope, addSong, getSongs) {
+    function ($scope, addSong, getSongs, authenticate) {
 
         $scope.newSong = {
             title: "",
@@ -11,16 +14,17 @@ app.controller("AddSongCtrl", [
             album: ""
         };
 
-        $scope.storeUserInputs = function () {
+        $scope.storeUserInputs = () => {
             if ($scope.newSong.title && $scope.newSong.artist && $scope.newSong.album) {
-                var songData = JSON.stringify($scope.newSong);
-                console.log(addSong);
-                console.log(getSongs);
+                let songData = JSON.stringify($scope.newSong);
                 addSong(songData)
-                    .then(function () {
-                        return getSongs;
-                    });
-            }
+                .then(
+                    () => getSongs
+                )}
+        }
+
+        $scope.logout = () => {
+            authenticate.logoutUser();
         }
     }]
 );
