@@ -1,0 +1,8 @@
+<section ng-init="getSearchParam()">
+	<h2>Top five tracks for {{ artist }}:</h2>
+	<ol>
+		<li ng-repeat="el in topFive">
+			<p>{{ el }}</p>
+		</li>
+	</ol>
+</section>

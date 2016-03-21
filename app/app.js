@@ -24,6 +24,11 @@ app.config(['$routeProvider',
         controller: 'SongViewCtrl',
         resolve: { isAuth }
       }).
+      when('/songs/artist-detail', {
+        templateUrl: 'partials/artist-detail.html',
+        controller: 'DetailCtrl',
+        resolve: { isAuth }
+      }).
       when('/songs/new', {
       	templateUrl: 'partials/add-song.html',
       	controller: 'AddSongCtrl',

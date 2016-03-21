@@ -1,41 +1,57 @@
 <section>
 	<div ng-include="'partials/nav.html'"></div>
+	<div class="row">
+		<div class="col-md-2 col-md-offset-3">
+			<div class="dropdown main-buttons" style="display:inline-block;">
+				<label>Artist: </label>
+				<button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+			    Choose an Artist
+			    	<span class="caret"></span>
+			 	</button>
+				<ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
+			    	<li ng-repeat="song in songs | unique: 'artist' " value="">
+			    		<a ng-click="filterArtists(song)" ng-model="selectedArtist">{{ song.artist }}</a>
+			    	</li>
+			  	</ul>
+			</div>
 
-	<div class="dropdown" style="display:inline-block;">
-		<button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
-	    Choose an Artist
-	    	<span class="caret"></span>
-	 	</button>
-		<ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
-	    	<li ng-repeat="song in songs | unique: 'artist' " value="">
-	    		<a ng-click="filterArtists(song)" ng-model="selectedArtist">{{ song.artist }}</a>
-	    	</li>
-	  	</ul>
-	</div>
+			<div class="dropdown main-buttons" style="display:inline-block;">
+				<label>Album: </label>
+				<button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+			    Choose an Album
+			    	<span class="caret"></span>
+			 	</button>
+				<ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
+			    	<li ng-repeat="song in songs | unique: 'album' "value="">
+			    		<a ng-click="filterAlbums(song)">{{ song.album }}</a>
+			    	</li>
+			  	</ul>
+			</div>
 
-	<div class="dropdown" style="display:inline-block;">
-		<button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
-	    Choose an Album
-	    	<span class="caret"></span>
-	 	</button>
-		<ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
-	    	<li ng-repeat="song in songs | unique: 'album' "value="">
-	    		<a ng-click="filterAlbums(song)">{{ song.album }}</a>
-	    	</li>
-	  	</ul>
-	</div>
-	
-	<div style="display:inline-block;">
-		<button class="btn btn-default" type="button" ng-click="unfilter()">
-	    Unfilter
-	 	</button>
-	</div>
+			<label>Genre: </label>
+			<div ng-repeat="song in songs | unique: 'genre' ">
+				<label for="{{song.genre}}">
+					<input type="radio" ng-click="filterGenres(song)" name="genres" value='{{song.genre}}'>{{ song.genre }}
+				</label>
+			</div>
 
-	<div ng-repeat="song in songs | filter: selectedArtist || selectedAlbum " class="song-list">
-		<a href="#/songs/{{ song.id }}">{{ song.title }}</a>
-		<p>{{ song.artist }}</p>
-		<p>{{ song.album }}</p>
-		<p>{{ song.genre }}</p>
-		<button class="delete-single" id="{{ song.id }}" ng-click="clickDelete($event)">Delete</button>
+			<div style="display:inline-block;" class='main-buttons'>
+				<button class="btn btn-default" type="button" ng-click="unfilter()">
+			    Unfilter
+			 	</button>
+		 	</div>
+		</div>
+
+		<div class="col-md-5 song-scroller">
+			<div ng-repeat="song in songs | filter: selectedArtist || selectedAlbum || selectedGenre" class="song-list">
+				<h5>{{ song.title }}</h5>
+				<span>
+					<a href="#/songs/artist-detail" ng-click="storeSearchParam(song.artist)">{{ song.artist }}</a> |
+					<a href="#/songs" ng-click="filterAlbums(song)">{{ song.album }}</a> |
+					<a href="#/songs" ng-click="filterGenres(song)">{{ song.genre }}</a>
+				</span>
+				<button class="delete-single" id="{{ song.id }}" ng-click="clickDelete($event)">Delete</button>
+			</div>
+		</div>
 	</div>
 </section>

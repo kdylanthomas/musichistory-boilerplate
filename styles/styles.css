@@ -1,0 +1,30 @@
+.song-scroller {
+	height: 350px;
+	overflow-y: scroll;
+}
+
+.main-buttons {
+	margin: 2% 0;
+}
+
+.centered {
+	text-align: center;
+}
+
+label {
+	width: 100px;
+}
+
+#genre {
+	width: 150px;
+}
+
+input[type='radio'] {
+	margin-right: 3%;
+}
+
+#login-container {
+	margin-top: 5%;
+	background-color: rgba(146,9,101,0.5);
+	box-shadow: 5px 5px 5px #44104B;
+}

@@ -17,8 +17,11 @@ app.controller("LoginCtrl", [
 			const password = user.password;
 			authenticate.createUser(email, password)
 			.then(
-				() => authenticate.loginUser(user.email, user.password),
+				(authData) => authenticate.storeUser(authData),
 				(error) => console.log('could not register user')
+			).then(
+				() => authenticate.loginUser(user.email, user.password),
+				(error) => console.log('could not add user to database')
 			).then(
 				() => $location.path('/songs'),
 				(error) => console.log('could not authenticate user')

@@ -5,8 +5,10 @@ app.controller("SongViewCtrl", [
   "get-songs",
   "delete-song",
   "authenticate",
+  "search-spotify",
+  "store-variables",
 
-    function ($scope, getSongs, deleteSong, authenticate) {
+    function ($scope, getSongs, deleteSong, authenticate, Spotify, storeVars) {
         getSongs().then(
             (songArray) => convertObjectToArray(songArray),
             (error) => console.log("nope sorry")
@@ -36,22 +38,37 @@ app.controller("SongViewCtrl", [
         $scope.filterArtists = (song) => {
             $scope.selectedArtist = song.artist;
             $scope.selectedAlbum = "";
+            $scope.selectedGenre = "";
             return $scope.selectedArtist;
         }
 
         $scope.filterAlbums = (song) => {
             $scope.selectedAlbum = song.album;
             $scope.selectedArtist = "";
+            $scope.selectedGenre = "";
             return $scope.selectedAlbum;
         }
 
-        $scope.logout = () => authenticate.logoutUser();
+        $scope.selectedGenres = [];
 
-        $scope.unfilter = () => {
-            console.log('unfiltering');
+        $scope.filterGenres = (song) => {
+            $scope.selectedGenre = song.genre;
             $scope.selectedArtist = "";
             $scope.selectedAlbum = "";
+            return $scope.selectedGenre;
         }
 
+        $scope.logout = () => authenticate.logoutUser()
+
+        $scope.unfilter = () => {
+            $scope.selectedArtist = "";
+            $scope.selectedAlbum = "";
+            $scope.selectedGenre = "";
+        }
+
+        $scope.storeSearchParam = (variable) => {
+            let searchParam = storeVars.setVariable(variable);
+            console.log(searchParam);
+        }
     }]
 );

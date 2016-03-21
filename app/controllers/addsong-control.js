@@ -2,20 +2,23 @@
 
 app.controller("AddSongCtrl", [
     "$scope",
+    "authenticate",
     "add-song",
     "get-songs",
-    "authenticate",
 
-    function ($scope, addSong, getSongs, authenticate) {
+    function ($scope, authenticate, addSong, getSongs) {
 
         $scope.newSong = {
             title: "",
             artist: "",
-            album: ""
+            album: "",
+            uid: ""
         };
 
         $scope.storeUserInputs = () => {
             if ($scope.newSong.title && $scope.newSong.artist && $scope.newSong.album) {
+                let user = authenticate.getUser();
+                $scope.newSong.uid = user.uid;
                 let songData = JSON.stringify($scope.newSong);
                 addSong(songData)
                 .then(
@@ -23,8 +26,7 @@ app.controller("AddSongCtrl", [
                 )}
         }
 
-        $scope.logout = () => {
-            authenticate.logoutUser();
-        }
+        $scope.logout = () => authenticate.logoutUser()
+
     }]
 );

@@ -1,8 +1,10 @@
 'use strict';
 
-app.factory("authenticate", function($q) {
+app.factory("authenticate", function($q, $http) {
 
 	let firebaseRef = new Firebase('https://blistering-inferno-4535.firebaseio.com/');
+
+	let currentUserData = null;
 
 	let Authenticate = {};
 
@@ -11,8 +13,13 @@ app.factory("authenticate", function($q) {
 		if (!authData) {
 			return false;
 		} else {
+			currentUserData = authData;
 			return true;
 		}
+	}
+
+	Authenticate.getUser = () => {
+		return currentUserData;
 	}
 
 	Authenticate.createUser = (user, pass) => {
@@ -51,6 +58,18 @@ app.factory("authenticate", function($q) {
 	}
 
 	Authenticate.logoutUser = () => firebaseRef.unauth()
+
+	Authenticate.storeUser = (authData) => {
+		let stringifiedUser = JSON.stringify({ uid: authData.uid });
+		console.log('adding ' + stringifiedUser + ' to database');
+		return $q((resolve, reject) => {
+			$http.post(`https://blistering-inferno-4535.firebaseio.com/users.json`, stringifiedUser)
+			.then(
+				data => resolve(data),
+				error => reject(error)
+			);
+		});
+	}
 
 	return Authenticate;
 });
